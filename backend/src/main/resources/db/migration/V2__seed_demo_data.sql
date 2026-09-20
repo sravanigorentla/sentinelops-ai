@@ -73,13 +73,14 @@ INSERT INTO ai_analyses (incident_id, summary, probable_root_cause, evidence_jso
  2
 );
 
--- Fix sequence counts for auto-increment IDs (ANSI SQL-2008 standard)
-ALTER TABLE roles ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE users ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE services ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE deployments ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE incidents ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE incident_comments ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE alert_rules ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE ai_analyses ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE audit_logs ALTER COLUMN id RESTART WITH 10;
+-- Fix sequence counts for auto-increment IDs in PostgreSQL
+SELECT setval(pg_get_serial_sequence('roles', 'id'), 10);
+SELECT setval(pg_get_serial_sequence('users', 'id'), 10);
+SELECT setval(pg_get_serial_sequence('services', 'id'), 10);
+SELECT setval(pg_get_serial_sequence('deployments', 'id'), 10);
+SELECT setval(pg_get_serial_sequence('incidents', 'id'), 10);
+SELECT setval(pg_get_serial_sequence('incident_comments', 'id'), 10);
+SELECT setval(pg_get_serial_sequence('alert_rules', 'id'), 10);
+SELECT setval(pg_get_serial_sequence('ai_analyses', 'id'), 10);
+SELECT setval(pg_get_serial_sequence('audit_logs', 'id'), 10);
+
