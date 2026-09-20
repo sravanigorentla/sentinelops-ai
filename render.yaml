@@ -60,6 +60,7 @@ services:
     name: sentinelops-redis
     region: oregon
     plan: free
+        ipAllowList: []
 
 databases:
   - name: sentinelops-db
