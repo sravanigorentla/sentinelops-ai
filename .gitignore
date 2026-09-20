@@ -1,0 +1,51 @@
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+.next/
+.out/
+
+# Java / Maven Backend
+backend/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Python / AI Service
+ai-service/__pycache__/
+ai-service/.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+ENV/
+.pytest_cache/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# IDE & Editor Files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Antigravity & Scratch Artifacts
+.gemini/
+scratch/
+task.md
+walkthrough.md
+implementation_plan.md
