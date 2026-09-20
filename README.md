@@ -150,3 +150,36 @@ npm run dev
 | **Admin** | `admin@sentinelops.io` | `Password123!` |
 | **Developer** | `dev@sentinelops.io` | `Password123!` |
 | **Viewer** | `viewer@sentinelops.io` | `Password123!` |
+
+---
+
+## Production Cloud Deployment (Render / Railway / AWS)
+
+SentinelOps is configured with a zero-code-change `render.yaml` infrastructure blueprint for single-click cloud deployment.
+
+### Option A: Render Cloud Deployment (Recommended)
+1. Sign in to [Render](https://render.com).
+2. Click **New +** -> **Blueprints**.
+3. Connect your GitHub repository `https://github.com/sravanigorentla/sentinelops-ai.git`.
+4. Render automatically detects `render.yaml` and provisions:
+   - Managed PostgreSQL 16
+   - Managed Redis 7
+   - FastAPI AI Microservice (`https://sentinelops-ai-service.onrender.com`)
+   - Spring Boot Backend (`https://sentinelops-backend.onrender.com`)
+   - React Frontend (`https://sentinelops-frontend.onrender.com`)
+
+### Option B: Railway Cloud Deployment
+1. Sign in to [Railway](https://railway.app).
+2. Click **New Project** -> **Deploy from GitHub repo**.
+3. Select `sentinelops-ai` repository.
+4. Add PostgreSQL and Redis plugins.
+
+### Option C: AWS EC2 / DigitalOcean Cloud VM Deployment
+1. Provision an Ubuntu 24.04 LTS instance.
+2. Clone repository and run:
+   ```bash
+   git clone https://github.com/sravanigorentla/sentinelops-ai.git
+   cd sentinelops-ai
+   docker compose up -d --build
+   ```
+
