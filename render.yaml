@@ -1,7 +1,7 @@
 services:
   - type: web
     name: sentinelops-frontend
-    env: docker
+    runtime: docker
     dockerfilePath: ./frontend/Dockerfile
     dockerContext: ./frontend
     region: oregon
@@ -9,11 +9,11 @@ services:
     healthCheckPath: /
     envVars:
       - key: PORT
-        value: 80
+        value: "80"
 
   - type: web
     name: sentinelops-backend
-    env: docker
+    runtime: docker
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
     region: oregon
@@ -26,12 +26,12 @@ services:
           property: connectionString
       - key: SPRING_REDIS_HOST
         fromService:
-          type: pserv
+          type: redis
           name: sentinelops-redis
           property: host
       - key: SPRING_REDIS_PORT
         fromService:
-          type: pserv
+          type: redis
           name: sentinelops-redis
           property: port
       - key: AI_SERVICE_URL
@@ -44,7 +44,7 @@ services:
 
   - type: web
     name: sentinelops-ai-service
-    env: docker
+    runtime: docker
     dockerfilePath: ./ai-service/Dockerfile
     dockerContext: ./ai-service
     region: oregon
@@ -56,10 +56,8 @@ services:
       - key: LOG_LEVEL
         value: INFO
 
-  - type: pserv
+  - type: redis
     name: sentinelops-redis
-    env: docker
-    image: redis:7-alpine
     region: oregon
     plan: free
 
